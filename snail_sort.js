@@ -30,7 +30,7 @@ const snail = (array) => {
       output.push(array[i].pop());
     }
 
-    if (array.length > 0) {
+    if (array.length) {
       output.push(...array.pop().reverse());
     }
 
