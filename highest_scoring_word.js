@@ -11,15 +11,24 @@
 
 // All letters will be lowercase and all inputs will be valid.
 
-
-const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-
 const high = (word) => {
-    return word.split('').reduce((acc, letter) => {
-        const score = alphabet.indexOf(letter) + 1;
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  let highestPoints = 0;
+  let highestScoringWord = '';
+  const words = word.split(' ').filter((word) => word);
 
-        return acc + score
-    }, 0)
-}
+  for (const word of words) {
+    const pointTotal = word
+      .split('')
+      .reduce((acc, letter) => acc + alphabet.indexOf(letter) + 1, 0);
 
-console.log(high('abad'));
+    if (pointTotal > highestPoints) {
+      highestPoints = pointTotal;
+      highestScoringWord = word;
+    }
+  }
+
+  return highestScoringWord;
+};
+
+console.log(high('man i need a taxi up to ubud'));
